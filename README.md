@@ -13,6 +13,7 @@
 - [x] Swagger
 - [x] Restful API Pattern
 - [x] Repository Pattern
+- [x] AutoMapper 
 
 ## Entidades envolvidas no processo
 
