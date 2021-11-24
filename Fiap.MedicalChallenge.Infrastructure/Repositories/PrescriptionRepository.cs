@@ -22,6 +22,13 @@ namespace Fiap.MedicalChallenge.Infrastructure.Repositories
         {
             Prescription prescription = _mapper.Map<Prescription>(dto);
 
+            foreach (int drugId in dto.DrugsIds)
+            {
+                Drug drug = _context.Drugs.FirstOrDefault(x => x.Id.Equals(drugId));
+
+                prescription.Drugs.Add(drug);
+            }
+
             _context.Prescriptions.Add(prescription);
 
             _context.SaveChanges();

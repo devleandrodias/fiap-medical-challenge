@@ -1,10 +1,14 @@
 {
   "dependencies": {
-    "mssql1": {
-      "secretStore": "AzureAppSettings",
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/FiapMedicalChallengeApiMgs/apis/FiapMedicalChallengeApi",
+      "type": "apis.azure"
+    },
+    "mssql2": {
+      "secretStore": null,
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/srv-fiap-medical-challenge/databases/db-medical-challenge",
       "type": "mssql.azure",
-      "connectionId": "ConnectionStrings:ChallengeConnectionString"
+      "connectionId": "ConnectionStrings:FiapConnectionString"
     }
   }
 }

@@ -15,5 +15,7 @@ namespace Fiap.MedicalChallenge.Domain.Models
 
         [Required]
         public bool IsRestrict { get; set; }
+     
+        public virtual ICollection<Prescription> Prescriptions { get; set; }
     }
 }

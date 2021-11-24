@@ -18,12 +18,18 @@ namespace Fiap.MedicalChallenge.Infrastructure.Repositories
             _mapper = mapper;
         }
 
-        public void Open()
+        public ReadOrderDto Open(OpenOrderDto dto)
         {
-            throw new NotImplementedException();
+            Order order = _mapper.Map<Order>(dto);
+
+            _context.Orders.Add(order);
+
+            _context.SaveChanges();
+
+            return _mapper.Map<ReadOrderDto>(order);
         }
 
-        public void Close()
+        public ReadOrderDto Close(CloseOrderDto dto, int id)
         {
             throw new NotImplementedException();
         }

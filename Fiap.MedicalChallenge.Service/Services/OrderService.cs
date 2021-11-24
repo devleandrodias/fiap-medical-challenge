@@ -13,14 +13,14 @@ namespace Fiap.MedicalChallenge.Service.Services
             _repository = repository;
         }
 
-        public void Open()
+        public ReadOrderDto Open(OpenOrderDto dto)
         {
-            _repository.Open();
+            return _repository.Open(dto);
         }
 
-        public void Close()
+        public ReadOrderDto Close(CloseOrderDto dto, int id)
         {
-            _repository.Close();
+            return _repository.Close(dto, id);
         }
 
         public IEnumerable<ReadOrderDto> GetByDrugStorageId(int id)

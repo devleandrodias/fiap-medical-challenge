@@ -9,6 +9,14 @@ namespace Fiap.MedicalChallenge.Infrastructure.Contexts
 
         public ApplicationDbContext(DbContextOptions<DbContext> opt) : base(opt) { }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Prescription>()
+                .HasMany(b => b.Drugs)
+                .WithMany(c => c.Prescriptions)
+                .UsingEntity(j => j.ToTable("PrescriptionDrugs"));
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

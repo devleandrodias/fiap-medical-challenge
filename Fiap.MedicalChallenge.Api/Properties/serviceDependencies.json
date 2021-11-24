@@ -1,8 +1,11 @@
 {
   "dependencies": {
-    "mssql1": {
+    "apis1": {
+      "type": "apis"
+    },
+    "mssql2": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings:ChallengeConnectionString"
+      "connectionId": "ConnectionStrings:FiapConnectionString"
     }
   }
 }

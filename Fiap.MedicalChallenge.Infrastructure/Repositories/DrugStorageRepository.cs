@@ -33,13 +33,13 @@ namespace Fiap.MedicalChallenge.Infrastructure.Repositories
 
         public ReadDrugStorageDto Create(CreateDrugStorageDto dto)
         {
-            DrugStorage DrugStorage = _mapper.Map<DrugStorage>(dto);
+            DrugStorage drugStorage = _mapper.Map<DrugStorage>(dto);
 
-            _context.DrugStorages.Add(DrugStorage);
+            _context.DrugStorages.Add(drugStorage);
 
             _context.SaveChanges();
 
-            return _mapper.Map<ReadDrugStorageDto>(DrugStorage);
+            return _mapper.Map<ReadDrugStorageDto>(drugStorage);
         }
 
         public Result Update(UpdateDrugStorageDto dto, int id)

@@ -15,17 +15,17 @@ namespace Fiap.MedicalChallenge.Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult Open([FromBody] CreateOrderDto dto)
+        public ActionResult Open([FromBody] OpenOrderDto dto)
         {
-            _service.Open();
+            _service.Open(dto);
 
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public ActionResult Close([FromRoute] int id)
+        public ActionResult Close([FromBody] CloseOrderDto dto, [FromRoute] int id)
         {
-            _service.Close();
+            _service.Close(dto, id);
 
             return NoContent();
         }

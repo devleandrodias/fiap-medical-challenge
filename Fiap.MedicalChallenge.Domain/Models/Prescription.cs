@@ -13,9 +13,9 @@ namespace Fiap.MedicalChallenge.Domain.Models
         [Required]
         public int PatientId { get; set; }
 
-        // 1R -> N -> Medicamentos
-
         [Required]
         public DateTime DueDate { get; set; }
+
+        public virtual ICollection<Drug> Drugs { get; set; }
     }
 }

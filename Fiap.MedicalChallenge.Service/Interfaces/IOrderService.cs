@@ -4,8 +4,8 @@ namespace Fiap.MedicalChallenge.Service.Interfaces
 {
     public interface IOrderService
     {
-        void Open();
-        void Close();
+        ReadOrderDto Open(OpenOrderDto dto);
+        ReadOrderDto Close(CloseOrderDto dto, int id);
         ReadOrderDto GetById(int id);
         IEnumerable<ReadOrderDto> GetByDrugStorageId(int id);
     }

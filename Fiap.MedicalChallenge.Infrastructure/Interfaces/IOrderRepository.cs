@@ -4,8 +4,8 @@ namespace Fiap.MedicalChallenge.Infrastructure.Interfaces
 {
     public interface IOrderRepository
     {
-        void Open();
-        void Close();
+        ReadOrderDto Open(OpenOrderDto dto);
+        ReadOrderDto Close(CloseOrderDto dto, int id);
         ReadOrderDto GetById(int id);
         IEnumerable<ReadOrderDto> GetByDrugStorageId(int id);
     }

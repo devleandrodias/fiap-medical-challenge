@@ -8,15 +8,12 @@ namespace Fiap.MedicalChallenge.Domain.Models
         public int Id { get; set; }
 
         [Required]
-        public int PatientId { get; set; } // Faz sentido aqui?
-
-        [Required]
-        public int PrescriptionId { get; set; } // Nao deve ser requerido
+        public int PrescriptionId { get; set; }
 
         [Required]
         public int DrugStorageId { get; set; }
 
-        [Required] // Pensar em forma melhor para integração com aplicativo
-        public string AppCode { get; set; } // Codigo do aplicativo
+        [Required]
+        public string AppCode { get; set; }
     }
 }
