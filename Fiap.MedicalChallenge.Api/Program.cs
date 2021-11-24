@@ -1,15 +1,30 @@
+using Fiap.MedicalChallenge.Infrastructure.Contexts;
+using Fiap.MedicalChallenge.Infrastructure.Interfaces;
+using Fiap.MedicalChallenge.Infrastructure.Repositories;
+using Fiap.MedicalChallenge.Service.Interfaces;
+using Fiap.MedicalChallenge.Service.Services;
+using Microsoft.OpenApi.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<ApplicationDbContext>();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+builder.Services.AddScoped<IDoctorService, DoctorService>();
+
+builder.Services.AddSwaggerGen(x =>
+{
+    x.SwaggerDoc("v1", new OpenApiInfo { Title = "FIAP Medical Challenge", Version = "v1" });
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
