@@ -1,5 +1,4 @@
-﻿using Fiap.MedicalChallenge.Domain.Models;
-using Fiap.MedicalChallenge.Infrastructure.Dtos.Doctor;
+﻿using Fiap.MedicalChallenge.Infrastructure.Dtos.Doctor;
 using FluentResults;
 
 namespace Fiap.MedicalChallenge.Service.Interfaces

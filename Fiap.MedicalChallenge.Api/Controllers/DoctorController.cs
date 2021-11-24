@@ -17,7 +17,7 @@ namespace Fiap.MedicalChallenge.Api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Doctor>> Get()
+        public ActionResult<IEnumerable<ReadDoctorDto>> Get()
         {
             IEnumerable<ReadDoctorDto> readDto = _service.Get();
 
@@ -27,7 +27,7 @@ namespace Fiap.MedicalChallenge.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Doctor> GetById([FromRoute] int id)
+        public ActionResult<ReadDoctorDto> GetById([FromRoute] int id)
         {
             ReadDoctorDto readDto = _service.GetById(id);
 

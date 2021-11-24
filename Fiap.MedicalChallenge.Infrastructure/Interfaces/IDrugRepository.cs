@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Fiap.MedicalChallenge.Infrastructure.Dtos.Drug;
+using FluentResults;
 
 namespace Fiap.MedicalChallenge.Infrastructure.Interfaces
 {
-    internal interface IDrugRepository
+    public interface IDrugRepository
     {
-
+        IEnumerable<ReadDrugDto> Get();
+        ReadDrugDto GetById(int id);
+        Result Delete(int id);
+        ReadDrugDto Create(CreateDrugDto dto);
+        Result Update(UpdateDrugDto dto, int id);
     }
 }
