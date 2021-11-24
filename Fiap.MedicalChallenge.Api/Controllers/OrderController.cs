@@ -1,4 +1,5 @@
-﻿using Fiap.MedicalChallenge.Service.Interfaces;
+﻿using Fiap.MedicalChallenge.Infrastructure.Dtos.Order;
+using Fiap.MedicalChallenge.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fiap.MedicalChallenge.Api.Controllers
@@ -13,16 +14,40 @@ namespace Fiap.MedicalChallenge.Api.Controllers
             _service = service;
         }
 
-        [HttpGet]
-        public void Get()
+        [HttpPost]
+        public ActionResult Open([FromBody] CreateOrderDto dto)
         {
+            _service.Open();
 
+            return Ok();
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult Close([FromRoute] int id)
+        {
+            _service.Close();
+
+            return NoContent();
         }
 
         [HttpGet("{id}")]
-        public void GetById([FromRoute] int id)
+        public ActionResult<ReadOrderDto> GetById([FromRoute] int id)
         {
+            ReadOrderDto readDto = _service.GetById(id);
 
+            if (readDto == null) return NotFound();
+
+            return Ok(readDto);
+        }
+
+        [HttpGet("DrugStorage/{id}")]
+        public ActionResult<IEnumerable<ReadOrderDto>> GetByDrugStorageId([FromRoute] int id)
+        {
+            IEnumerable<ReadOrderDto> readDto = _service.GetByDrugStorageId(id);
+
+            if (!readDto.Any()) return NotFound();
+
+            return Ok(readDto);
         }
     }
 }

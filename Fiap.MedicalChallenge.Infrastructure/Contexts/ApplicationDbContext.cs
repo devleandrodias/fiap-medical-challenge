@@ -24,5 +24,9 @@ namespace Fiap.MedicalChallenge.Infrastructure.Contexts
         public DbSet<DrugStorage> DrugStorages { get; set; }
 
         public DbSet<Patient> Patients { get; set; }
+
+        public DbSet<Prescription> Prescriptions { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
     }
 }
