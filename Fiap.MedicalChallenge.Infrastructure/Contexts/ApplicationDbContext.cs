@@ -43,7 +43,7 @@ namespace Fiap.MedicalChallenge.Infrastructure.Contexts
             {
                 optionsBuilder
                     .UseLazyLoadingProxies()
-                    .UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Chinook");
+                    .UseSqlServer("Data Source=srv-fiap-medical-challenge.database.windows.net;Initial Catalog=db-medical-challenge;Persist Security Info=True;User ID=fiap;Password=44OMMzkzWZ&J%SsfmG67");
             }
         }
 
