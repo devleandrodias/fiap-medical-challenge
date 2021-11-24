@@ -2,7 +2,7 @@
 
 namespace Fiap.MedicalChallenge.Domain.Models
 {
-    public class Drugstorage
+    public class DrugStorage
     {
         [Required, Key]
         public int Id { get; set; }

@@ -21,6 +21,9 @@ builder.Services.AddScoped<IDoctorService, DoctorService>();
 builder.Services.AddScoped<IDrugRepository, DrugRepository>();
 builder.Services.AddScoped<IDrugService, DrugService>();
 
+builder.Services.AddScoped<IDrugStorageRepository, DrugStorageRepository>();
+builder.Services.AddScoped<IDrugStorageService, DrugStorageService>();
+
 builder.Services.AddSwaggerGen(x =>
 {
     x.SwaggerDoc("v1", new OpenApiInfo { Title = "FIAP Medical Challenge", Version = "v1" });
