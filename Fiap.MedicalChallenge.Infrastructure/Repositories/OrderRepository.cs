@@ -31,7 +31,17 @@ namespace Fiap.MedicalChallenge.Infrastructure.Repositories
 
         public ReadOrderDto Close(CloseOrderDto dto, int id)
         {
-            throw new NotImplementedException();
+            Order order = _context.Orders.FirstOrDefault(x => x.Id == id);
+
+            if (order != null)
+            {
+                order.Status = "CLOSE";
+                order.Prescription.Status = "CLOSE";
+            }
+
+            _context.SaveChanges();
+
+            return _mapper.Map<ReadOrderDto>(order);
         }
 
         public IEnumerable<ReadOrderDto> GetByDrugStorageId(int id)

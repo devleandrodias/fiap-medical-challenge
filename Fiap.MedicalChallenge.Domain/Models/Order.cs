@@ -4,6 +4,11 @@ namespace Fiap.MedicalChallenge.Domain.Models
 {
     public class Order
     {
+        public Order()
+        {
+            Status = "OPEN";
+        }
+
         [Required, Key]
         public int Id { get; set; }
 
@@ -15,5 +20,9 @@ namespace Fiap.MedicalChallenge.Domain.Models
 
         [Required]
         public string AppCode { get; set; }
+
+        public string Status { get; set; }
+
+        public virtual Prescription Prescription { get; set; }
     }
 }
