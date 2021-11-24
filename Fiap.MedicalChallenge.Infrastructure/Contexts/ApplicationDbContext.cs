@@ -15,13 +15,35 @@ namespace Fiap.MedicalChallenge.Infrastructure.Contexts
                 .HasMany(b => b.Drugs)
                 .WithMany(c => c.Prescriptions)
                 .UsingEntity(j => j.ToTable("PrescriptionDrugs"));
+
+            builder.Entity<Prescription>()
+                .HasOne(x => x.Doctor)
+                .WithMany(x => x.Prescriptions)
+                .HasForeignKey(x => x.DoctorId);
+
+            builder.Entity<Prescription>()
+                .HasOne(x => x.Patient)
+                .WithMany(x => x.Prescriptions)
+                .HasForeignKey(x => x.PatientId);
+
+            builder.Entity<Order>()
+                .HasOne(x => x.DrugStorage)
+                .WithMany(x => x.Orders)
+                .HasForeignKey(x => x.DrugStorageId);
+
+            builder.Entity<Order>()
+                .HasOne(x => x.Prescription)
+                .WithMany(x => x.Orders)
+                .HasForeignKey(x => x.PrescriptionId);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Chinook");
+                optionsBuilder
+                    .UseLazyLoadingProxies()
+                    .UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Chinook");
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Fiap.MedicalChallenge.Domain.Models
 {
@@ -15,5 +16,8 @@ namespace Fiap.MedicalChallenge.Domain.Models
 
         [Required, StringLength(18)]
         public string Cnpj { get; set; }
+
+        [JsonIgnore]
+        public virtual IEnumerable<Order> Orders { get; set; }
     }
 }

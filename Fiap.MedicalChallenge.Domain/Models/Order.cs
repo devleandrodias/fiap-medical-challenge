@@ -15,14 +15,16 @@ namespace Fiap.MedicalChallenge.Domain.Models
         [Required]
         public int PrescriptionId { get; set; }
 
+        public virtual Prescription Prescription { get; set; }
+
         [Required]
         public int DrugStorageId { get; set; }
+
+        public virtual DrugStorage DrugStorage { get; set; }
 
         [Required]
         public string AppCode { get; set; }
 
         public string Status { get; set; }
-
-        public virtual Prescription Prescription { get; set; }
     }
 }

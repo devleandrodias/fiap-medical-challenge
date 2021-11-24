@@ -7,5 +7,7 @@
         public int DrugStorageId { get; set; }
         
         public string AppCode { get; set; }
+
+        public string Status { get; set; }
     }
 }

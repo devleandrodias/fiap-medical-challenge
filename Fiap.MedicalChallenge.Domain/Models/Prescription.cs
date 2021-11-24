@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Fiap.MedicalChallenge.Domain.Models
 {
@@ -15,14 +16,22 @@ namespace Fiap.MedicalChallenge.Domain.Models
         [Required]
         public int DoctorId { get; set; }
 
+        public virtual Doctor Doctor { get; set; }
+
         [Required]
         public int PatientId { get; set; }
+
+        public virtual Patient Patient { get; set; }
 
         [Required]
         public DateTime DueDate { get; set; }
 
         [Required]
         public string Status { get; set; }
+
+
+        [JsonIgnore]
+        public virtual IEnumerable<Order> Orders { get; set; }
 
         public virtual ICollection<Drug> Drugs { get; set; }
     }

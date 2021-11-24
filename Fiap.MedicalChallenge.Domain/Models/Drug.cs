@@ -4,6 +4,11 @@ namespace Fiap.MedicalChallenge.Domain.Models
 {
     public class Drug
     {
+        public Drug()
+        {
+
+        }
+
         [Required, Key]
         public int Id { get; set; }
 

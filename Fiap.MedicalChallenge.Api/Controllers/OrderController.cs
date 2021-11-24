@@ -14,7 +14,7 @@ namespace Fiap.MedicalChallenge.Api.Controllers
             _service = service;
         }
 
-        [HttpPost]
+        [HttpPost("Open")]
         public ActionResult Open([FromBody] OpenOrderDto dto)
         {
             _service.Open(dto);
@@ -22,7 +22,7 @@ namespace Fiap.MedicalChallenge.Api.Controllers
             return Ok();
         }
 
-        [HttpPut("{id}")]
+        [HttpPost("Close/{id}")]
         public ActionResult Close([FromBody] CloseOrderDto dto, [FromRoute] int id)
         {
             _service.Close(dto, id);

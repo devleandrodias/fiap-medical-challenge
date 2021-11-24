@@ -4,6 +4,7 @@ using Fiap.MedicalChallenge.Infrastructure.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fiap.MedicalChallenge.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211124194149_UpdateRelations")]
+    partial class UpdateRelations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,8 +145,6 @@ namespace Fiap.MedicalChallenge.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DrugStorageId");
-
                     b.HasIndex("PrescriptionId");
 
                     b.ToTable("Orders");
@@ -220,19 +220,11 @@ namespace Fiap.MedicalChallenge.Infrastructure.Migrations
 
             modelBuilder.Entity("Fiap.MedicalChallenge.Domain.Models.Order", b =>
                 {
-                    b.HasOne("Fiap.MedicalChallenge.Domain.Models.DrugStorage", "DrugStorage")
-                        .WithMany("Orders")
-                        .HasForeignKey("DrugStorageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Fiap.MedicalChallenge.Domain.Models.Prescription", "Prescription")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("PrescriptionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("DrugStorage");
 
                     b.Navigation("Prescription");
                 });
@@ -261,19 +253,9 @@ namespace Fiap.MedicalChallenge.Infrastructure.Migrations
                     b.Navigation("Prescriptions");
                 });
 
-            modelBuilder.Entity("Fiap.MedicalChallenge.Domain.Models.DrugStorage", b =>
-                {
-                    b.Navigation("Orders");
-                });
-
             modelBuilder.Entity("Fiap.MedicalChallenge.Domain.Models.Patient", b =>
                 {
                     b.Navigation("Prescriptions");
-                });
-
-            modelBuilder.Entity("Fiap.MedicalChallenge.Domain.Models.Prescription", b =>
-                {
-                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }
